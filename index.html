@@ -548,6 +548,108 @@
             transform: translateX(30px) scale(1.1);
         }
 
+        /* Platform chooser styles */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .platform-item {
+            position: relative;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .platform-item:hover {
+            border-color: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(90, 103, 216, 0.15);
+        }
+
+        .platform-item input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .platform-item label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .platform-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            color: white;
+        }
+
+        .platform-info {
+            flex: 1;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .platform-stats {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .platform-item input[type="checkbox"]:checked + label .platform-icon {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            animation: platformSelect 0.3s ease-out;
+        }
+
+        .platform-item input[type="checkbox"]:checked {
+            border-color: #48bb78;
+            background: linear-gradient(135deg, #f0fff4, #ffffff);
+        }
+
+        @keyframes platformSelect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .platform-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .platform-summary span {
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border-radius: 8px;
+        }
+
         @media (max-width: 768px) {
             .dashboard {
                 grid-template-columns: 1fr;
@@ -559,6 +661,16 @@
             
             .personality-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-summary {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
         }
     </style>
@@ -647,11 +759,72 @@
 
                     <div class="form-group">
                         <label>Survey Platforms</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                            <label><input type="checkbox" checked> Survey Junkie</label>
-                            <label><input type="checkbox" checked> Swagbucks</label>
-                            <label><input type="checkbox"> InboxDollars</label>
-                            <label><input type="checkbox"> MyPoints</label>
+                        <div class="platform-grid">
+                            <div class="platform-item" data-platform="survey-junkie">
+                                <input type="checkbox" id="survey-junkie" checked>
+                                <label for="survey-junkie">
+                                    <div class="platform-icon">📊</div>
+                                    <div class="platform-info">
+                                        <div class="platform-name">Survey Junkie</div>
+                                        <div class="platform-stats">$0.50-3.00 per survey</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="platform-item" data-platform="swagbucks">
+                                <input type="checkbox" id="swagbucks" checked>
+                                <label for="swagbucks">
+                                    <div class="platform-icon">💰</div>
+                                    <div class="platform-info">
+                                        <div class="platform-name">Swagbucks</div>
+                                        <div class="platform-stats">$0.25-2.00 per survey</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="platform-item" data-platform="inboxdollars">
+                                <input type="checkbox" id="inboxdollars">
+                                <label for="inboxdollars">
+                                    <div class="platform-icon">📧</div>
+                                    <div class="platform-info">
+                                        <div class="platform-name">InboxDollars</div>
+                                        <div class="platform-stats">$0.50-5.00 per survey</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="platform-item" data-platform="mypoints">
+                                <input type="checkbox" id="mypoints">
+                                <label for="mypoints">
+                                    <div class="platform-icon">⭐</div>
+                                    <div class="platform-info">
+                                        <div class="platform-name">MyPoints</div>
+                                        <div class="platform-stats">Points per survey</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="platform-item" data-platform="toluna">
+                                <input type="checkbox" id="toluna">
+                                <label for="toluna">
+                                    <div class="platform-icon">🎯</div>
+                                    <div class="platform-info">
+                                        <div class="platform-name">Toluna</div>
+                                        <div class="platform-stats">$1.00-5.00 per survey</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="platform-item" data-platform="yougov">
+                                <input type="checkbox" id="yougov">
+                                <label for="yougov">
+                                    <div class="platform-icon">🏛️</div>
+                                    <div class="platform-info">
+                                        <div class="platform-name">YouGov</div>
+                                        <div class="platform-stats">$0.50-2.00 per survey</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="platform-summary">
+                            <span id="selectedPlatforms">2 platforms selected</span>
+                            <button class="btn btn-secondary btn-sm" id="selectAllPlatforms">Select All</button>
+                            <button class="btn btn-secondary btn-sm" id="clearAllPlatforms">Clear All</button>
                         </div>
                     </div>
                 </div>
@@ -754,7 +927,8 @@
             successfulSurveys: 0,
             earnings: 0,
             startTime: null,
-            responses: new Map()
+            responses: new Map(),
+            selectedPlatforms: ['survey-junkie', 'swagbucks']
         };
 
         // Create animated background particles
@@ -819,6 +993,7 @@
             setupEventListeners();
             updatePersonalityDescription();
             updateSpeedValue();
+            updatePlatformSummary();
             startActivitySimulation();
         }
 
@@ -847,6 +1022,15 @@
                 });
             });
 
+            // Platform selection
+            document.querySelectorAll('.platform-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updatePlatformSelection);
+            });
+
+            // Platform control buttons
+            document.getElementById('selectAllPlatforms').addEventListener('click', selectAllPlatforms);
+            document.getElementById('clearAllPlatforms').addEventListener('click', clearAllPlatforms);
+
             // Control buttons
             document.getElementById('startBot').addEventListener('click', startBot);
             document.getElementById('pauseBot').addEventListener('click', pauseBot);
@@ -871,6 +1055,53 @@
         function updateSpeedValue() {
             const speed = document.getElementById('responseSpeed').value;
             document.getElementById('speedValue').textContent = speed;
+        }
+
+        // Platform management functions
+        function updatePlatformSelection() {
+            const checkboxes = document.querySelectorAll('.platform-item input[type="checkbox"]');
+            botState.selectedPlatforms = [];
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    botState.selectedPlatforms.push(checkbox.id);
+                }
+            });
+            
+            updatePlatformSummary();
+            logActivity(`Platforms updated: ${botState.selectedPlatforms.length} selected`, 'info');
+        }
+
+        function selectAllPlatforms() {
+            document.querySelectorAll('.platform-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            updatePlatformSelection();
+            logActivity('All platforms selected', 'success');
+        }
+
+        function clearAllPlatforms() {
+            document.querySelectorAll('.platform-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            updatePlatformSelection();
+            logActivity('All platforms cleared', 'warning');
+        }
+
+        function updatePlatformSummary() {
+            const count = botState.selectedPlatforms.length;
+            const summaryElement = document.getElementById('selectedPlatforms');
+            
+            if (count === 0) {
+                summaryElement.textContent = 'No platforms selected';
+                summaryElement.style.color = '#e53e3e';
+            } else if (count === 1) {
+                summaryElement.textContent = '1 platform selected';
+                summaryElement.style.color = '#4a5568';
+            } else {
+                summaryElement.textContent = `${count} platforms selected`;
+                summaryElement.style.color = '#4a5568';
+            }
         }
 
         // Start bot functionality
