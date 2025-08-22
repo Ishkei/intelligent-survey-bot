@@ -6,6 +6,9 @@ A modern, AI-powered survey completion interface with multiple personality modes
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Version](https://img.shields.io/badge/Version-2.0-orange)
 
+<img width="1620" height="1781" alt="screencapture-file-media-fuse-crostini-908873b91840da8009983962be06cd48708bd1a1-termina-penguin-intelligent-survey-bot-index-html-2025-08-21-23_38_09" src="https://github.com/user-attachments/assets/30aecf57-112a-4e75-8f93-6ec7a63522b2" />
+
+
 ## ✨ Features
 
 ### 🎨 Advanced Visual Design
@@ -222,6 +225,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by [DEX]**
 
 *This project is for educational and demonstration purposes. Please ensure compliance with survey platform terms of service.*
