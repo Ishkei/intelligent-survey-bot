@@ -222,6 +222,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by [DEX]**
 
 *This project is for educational and demonstration purposes. Please ensure compliance with survey platform terms of service.*
