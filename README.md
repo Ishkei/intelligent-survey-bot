@@ -1,4 +1,4 @@
-# 🤖 Intelligent Survey Bot Dashboard
+# 🤖 Survey Bot Dashboard
 
 A modern, AI-powered survey completion interface with multiple personality modes and advanced features. Built with cutting-edge CSS animations and JavaScript functionality.
 
